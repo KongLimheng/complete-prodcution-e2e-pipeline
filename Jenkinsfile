@@ -44,24 +44,22 @@ pipeline{
             }
         }
         
-        // stage("Sonarqube Analysis") {
-        //     steps {
-        //         script {
-        //             withSonarQubeEnv(credentialsId: 'jenkins-sonarqube-token') {
-        //                 sh "mvn sonar:sonar"
-        //             }
-        //         }
-        //     }
-
-        // }
+        stage("Sonarqube Analysis") {
+            steps {
+                script {
+                    withSonarQubeEnv(credentialsId: 'jenkins-sonarqub') {
+                        sh "mvn sonar:sonar"
+                    }
+                }
+            }
+        }
 
         // stage("Quality Gate") {
         //     steps {
         //         script {
-        //             waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqube-token'
+        //             waitForQualityGate abortPipeline: false, credentialsId: 'jenkins-sonarqub'
         //         }
         //     }
-
         // }
 
         // stage("Build & Push Docker Image") {
